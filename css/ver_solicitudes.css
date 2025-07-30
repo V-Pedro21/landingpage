@@ -1,0 +1,91 @@
+/* Estilos específicos para ver_solicitudes.php */
+.solicitud-item {
+    background-color: #f0f8ff; /* Fondo azul claro para las solicitudes */
+    border: 1px solid #cceeff;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+}
+
+/* Bordes izquierdos basados en el estado */
+.solicitud-item.estado-pendiente { border-left: 5px solid #ffc107; } /* Amarillo de advertencia */
+.solicitud-item.estado-aceptada { border-left: 5px solid #28a745; } /* Verde de éxito */
+.solicitud-item.estado-rechazada { border-left: 5px solid #dc3545; } /* Rojo de peligro */
+
+.solicitud-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    color: #0056b3; /* Azul oscuro para el encabezado */
+}
+.solicitud-header .estado {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+}
+/* Colores de estado para el tag */
+.estado-pendiente .estado { background-color: #ffc107; }
+.estado-aceptada .estado { background-color: #28a745; }
+.estado-rechazada .estado { background-color: #dc3545; }
+
+.solicitud-details {
+    font-size: 0.95em;
+    color: #555;
+}
+.solicitud-details p {
+    margin: 5px 0;
+}
+.solicitud-actions {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column; /* Cambiado a columna para el textarea */
+    gap: 10px;
+}
+.solicitud-actions .button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end; /* Alinea los botones a la derecha */
+}
+.solicitud-actions button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+.solicitud-actions .btn-accept {
+    background-color: #28a745; /* Verde para aceptar */
+    color: white;
+}
+.solicitud-actions .btn-accept:hover {
+    background-color: #218838;
+}
+.solicitud-actions .btn-reject {
+    background-color: #dc3545; /* Rojo para rechazar */
+    color: white;
+}
+.solicitud-actions .btn-reject:hover {
+    background-color: #c82333;
+}
+.solicitud-actions textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    resize: vertical; /* Permite redimensionar verticalmente */
+}
+.no-solicitudes {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}

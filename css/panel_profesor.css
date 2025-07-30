@@ -1,0 +1,272 @@
+/* css/panel_profesor.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 30px;
+    text-align: center;
+    background-color: #e9ecef; /* Un gris suave de fondo */
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido horizontalmente */
+    justify-content: center; /* Centra el contenido verticalmente si es más corto que la ventana */
+}
+
+.container {
+    margin: auto;
+    max-width: 700px; /* Un poco más ancho para mejor presentación */
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.15);
+    text-align: left; /* Alinea el texto a la izquierda dentro del contenedor */
+}
+
+h1, h2 {
+    color: #004d99; /* Azul más oscuro para títulos */
+    margin-bottom: 20px;
+    text-align: center; /* Centrar los títulos */
+}
+
+h1 {
+    font-size: 2.2em;
+}
+
+h2 {
+    font-size: 1.6em;
+    margin-top: 30px; /* Espacio superior para separar secciones */
+    border-bottom: 2px solid #f0f0f0; /* Línea divisoria suave */
+    padding-bottom: 10px;
+}
+
+p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    color: #555;
+}
+
+/* Estilos para mensajes de éxito/error */
+p.success-message, p.error-message {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px; /* Espacio debajo del mensaje */
+}
+
+p.success-message {
+    color: green;
+    border: 1px solid green;
+    background-color: #e6ffe6;
+}
+
+p.error-message {
+    color: red;
+    border: 1px solid red;
+    background-color: #ffe6e6;
+}
+
+.temas-lista {
+    margin-bottom: 25px;
+    text-align: center; /* Centrar los chips de temas */
+}
+
+.temas-lista span {
+    display: inline-block;
+    background-color: #007bff; /* Azul de tema */
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px; /* Más redondeado para un "chip" */
+    margin: 4px;
+    font-size: 0.95em;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+ul.horarios-list { /* Modificado para ser más específico si tienes otros UL */
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+}
+
+.horario-item {
+    background-color: #f8f9fa; /* Fondo ligeramente diferente para cada item */
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    align-items: center;
+    justify-content: space-between; /* Espacio entre el contenido del horario y los botones */
+    font-size: 1em;
+    color: #495057;
+}
+
+.horario-item span {
+    /* Mantén flex-basis si quieres una distribución por defecto */
+    /* flex-basis: 30%; */
+    /* text-align: center; */ /* Esto podría no ser lo que quieres con justify-content: space-between */
+    margin-right: 15px; /* Espacio entre los detalles del horario */
+    flex-shrink: 0; /* Evita que el texto se encoja */
+}
+
+/* Estilos para los botones de acción dentro de los ítems de horario */
+.horario-actions {
+    display: flex;
+    gap: 10px; /* Espacio entre los botones de acción */
+    margin-left: auto; /* Empuja los botones a la derecha */
+    flex-shrink: 0; /* Evita que los botones se encojan */
+    margin-top: 5px; /* Pequeño margen superior si se envuelven */
+}
+
+.horario-actions .button { /* Aplica al .button dentro de .horario-actions */
+    padding: 5px 10px;
+    font-size: 0.9em;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+    border: 1px solid transparent; /* Añade un borde transparente por defecto */
+    display: inline-block; /* Asegura que se comporten como bloques para padding */
+}
+
+.horario-actions .edit-btn {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff; /* Borde del mismo color */
+}
+.horario-actions .edit-btn:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.horario-actions .delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545; /* Borde del mismo color */
+}
+.horario-actions .delete-btn:hover {
+    background-color: #c82333;
+    border-color: #c82333;
+}
+
+/* Estilo para horarios bloqueados */
+.horario-item.bloqueado {
+    background-color: #ffebeb; /* Fondo rojizo claro */
+    border-color: #fca0a0; /* Borde más distintivo */
+    opacity: 0.9;
+}
+.horario-item.bloqueado span {
+    text-decoration: line-through;
+    color: #777; /* Texto más tenue */
+}
+
+
+.botones {
+    margin-top: 40px; /* Más espacio para los botones */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px; /* Espacio entre botones */
+}
+
+.botones .button {
+    display: inline-block;
+    background-color: #007bff; /* Azul por defecto */
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.botones .button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.view-alumnos-btn {
+    background-color: #28a745; /* Color verde */
+}
+
+.view-alumnos-btn:hover {
+    background-color: #218838;
+}
+
+.logout-btn {
+    background-color: #dc3545; /* Rojo */
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+}
+
+/* Estilo para el botón de "Añadir Nuevo Horario" */
+.add-horario-btn {
+    display: block; /* Ocupa todo el ancho disponible */
+    width: fit-content; /* Se ajusta al contenido */
+    margin: 20px auto; /* Centra el botón */
+    padding: 10px 20px;
+    background-color: #6a1b9a; /* Un color morado, puedes elegir el que quieras */
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+}
+.add-horario-btn:hover {
+    background-color: #4a148c; /* Tono más oscuro al pasar el mouse */
+}
+
+
+.nav-button-group .home-button {
+    margin-top: 20px; /* Espacio para el botón de inicio */
+    background-color: #6c757d; /* Color gris */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-button-group .home-button:hover {
+    background-color: #5a6268;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+    .botones {
+        flex-direction: column; /* Apilar botones en pantallas pequeñas */
+        align-items: center; /* Centrar botones apilados */
+    }
+    .botones .button {
+        width: 80%; /* Hacer los botones más anchos */
+        max-width: 300px;
+    }
+    /* Asegurar que los botones de acción dentro de .horario-item también se adapten */
+    .horario-item {
+        flex-direction: column; /* Apilar contenido y botones en móviles */
+        align-items: flex-start; /* Alinear a la izquierda cuando se apilan */
+    }
+    .horario-item span {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    .horario-actions {
+        width: 100%; /* Ocupar todo el ancho disponible */
+        justify-content: space-around; /* Distribuir los botones de acción */
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}

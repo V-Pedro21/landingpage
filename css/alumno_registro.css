@@ -1,0 +1,153 @@
+/* css/alumno_registro.css */
+
+/* Estilos específicos para el formulario */
+form {
+    /* Los estilos de margen, max-width, padding, box-shadow y text-align del form
+       ahora serán manejados por la clase .form-section en landing_page.css */
+    background-color: #ffffff; /* Mantener el fondo blanco del formulario */
+    border-radius: 12px; /* Mantener bordes redondeados del formulario */
+    text-align: left; /* Mantener el texto alineado a la izquierda dentro del formulario */
+}
+
+/* Títulos dentro del formulario */
+form h2, form h3, form h4 {
+    color: #2a4d69; /* Un azul más profundo para títulos del formulario */
+    text-align: center;
+    margin-bottom: 25px;
+    margin-top: 20px; /* Ajustado para mejor espaciado dentro de la sección del formulario */
+    font-size: 1.8em;
+}
+form h3, form h4 {
+    font-size: 1.4em;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #34495e;
+}
+
+/* Estilos para los contenedores de checkboxes de temas */
+.tema-checkbox-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    gap: 8px; /* Espacio entre el checkbox y el label */
+}
+
+.tema-checkbox-item input[type="checkbox"] {
+    width: auto;
+    padding: 0;
+    margin: 0;
+    transform: scale(1.2); /* Hace el checkbox un poco más grande */
+    cursor: pointer;
+}
+
+.tema-checkbox-item label {
+    display: inline-block; /* Permite que el label esté al lado del checkbox */
+    margin-bottom: 0;
+    font-weight: normal; /* El label no necesita ser bold aquí */
+    color: #333;
+    cursor: pointer;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+textarea,
+select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 1em;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.08);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #80bdff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.05em;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Estilos para los temas del profesor (chips - si se usaran en el futuro de otra forma) */
+/* Por ahora, esta clase no es usada en tu HTML actual, pero la mantengo si la usas para mostrar temas del profesor en otro lugar */
+.tema-chip {
+    display: inline-block;
+    background-color: #6f42c1; /* Púrpura para temas */
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin: 4px;
+    font-size: 0.9em;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Contenedores de carga AJAX */
+#temasProfesorContainer, #horariosProfesorContainer {
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #e9f5ff; /* Fondo claro para secciones AJAX */
+    border-radius: 8px;
+    border: 1px dashed #a7d9ff;
+}
+
+.small-text {
+    font-size: 0.85em;
+    color: #6c757d;
+    margin-top: 10px;
+}
+
+/* Para el enlace de "Ya tienes cuenta" */
+.login-link {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.95em;
+}
+
+.login-link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries para responsividad específica del formulario */
+@media (max-width: 768px) {
+    /* Ajustes mínimos si ya el .form-section tiene un max-width y padding responsive */
+    /* form {
+        padding: 20px;
+    } */
+}

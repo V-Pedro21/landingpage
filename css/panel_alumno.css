@@ -1,0 +1,169 @@
+/* css/panel_alumno.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eef4f7; /* Un azul claro muy suave */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+.card {
+    background-color: #ffffff;
+    padding: 35px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 550px;
+    text-align: left;
+    border-left: 6px solid #007bff; /* Un toque de color azul */
+}
+
+h2 {
+    color: #004d99; /* Azul oscuro */
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    color: #555;
+}
+
+p strong {
+    color: #004d99; /* Resaltar el texto de las etiquetas */
+    font-weight: bold;
+}
+
+.logout {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.logout a {
+    display: inline-block;
+    background-color: #dc3545; /* Rojo para cerrar sesión */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.logout a:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+.nav-button-group {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.home-button {
+    display: inline-block;
+    background-color: #6c757d; /* Gris para botón de inicio */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.home-button:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* Responsividad básica */
+@media (max-width: 600px) {
+    .card {
+        padding: 25px 20px;
+        margin: 20px;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    .logout a, .home-button {
+        padding: 8px 15px;
+        font-size: 0.95em;
+    }
+}
+/* Estilos básicos para los estados, puedes adaptarlos a tu CSS */
+        /* IMPORTANTE: Estos nombres de clase deben coincidir con tus estados reales en la BD */
+        .estado-Programada { color: #007bff; font-weight: bold; } /* Azul - antes Pendiente/Aceptada */
+        .estado-Completada { color: #28a745; font-weight: bold; } /* Verde */
+        .estado-Cancelada { color: #dc3545; font-weight: bold; } /* Rojo */
+        /* Asegúrate de tener los estilos para todos tus estados reales: Programada, Completada, Cancelada */
+        
+        .alert {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        .alert-info { background-color: #e2f4ff; border: 1px solid #cce5ff; color: #004085; }
+        .alert-success { background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .alert-warning { background-color: #fff3cd; border: 1px solid #ffeeba; color: #856404; }
+        .alert-error { background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+
+        /* Estilo para el nuevo botón */
+        .new-request-button {
+            display: inline-block;
+            background-color: #007bff; /* Azul */
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .new-request-button:hover {
+            background-color: #0056b3; /* Azul más oscuro al pasar el ratón */
+        }
+
+        /* Estilos para las tarjetas de citas */
+        .cita-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: #fdfdfd;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .cita-card h4 {
+            margin-top: 0;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .cita-card p {
+            margin-bottom: 5px;
+        }
+        .no-citas {
+            color: #888;
+            text-align: center;
+            padding: 20px;
+            border: 1px dashed #ccc;
+            border-radius: 5px;
+        }

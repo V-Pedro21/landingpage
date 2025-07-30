@@ -1,0 +1,257 @@
+/* Estilos generales para el cuerpo de la página de gestión */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 30px;
+    text-align: center;
+    background-color: #e9ecef; /* Un gris suave de fondo */
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido horizontalmente */
+    justify-content: flex-start; /* Alinea el contenido arriba */
+}
+
+/* Estilo para el contenedor principal (la "card") */
+.card {
+    margin: 30px auto; /* Margen superior e inferior, centrado horizontalmente */
+    max-width: 800px; /* Un ancho adecuado para el contenido */
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.15);
+    text-align: left; /* Alinea el texto a la izquierda dentro del contenedor */
+    width: 90%; /* Ancho responsivo */
+}
+
+h2, h3, h4 {
+    color: #004d99; /* Azul oscuro para títulos */
+    margin-bottom: 20px;
+    text-align: center; /* Centrar los títulos */
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.5em;
+    margin-top: 30px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+h4 {
+    font-size: 1.2em;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    color: #555;
+}
+
+hr { /* Línea divisoria */
+    border: none;
+    border-top: 1px solid #f0f0f0;
+    margin: 30px 0;
+}
+
+/* Mensajes de éxito/error */
+.message {
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Estilos para las listas de horarios y temas */
+.lista-items ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.item-entry {
+    background-color: #f8f9fa; /* Fondo ligeramente diferente para cada item */
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1em;
+    color: #495057;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.item-entry:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.item-entry span {
+    flex-basis: auto; /* Ajuste automático de ancho */
+    margin-right: 15px; /* Espacio entre los spans */
+    font-weight: bold;
+}
+
+.item-entry span:last-of-type {
+    margin-right: 0;
+}
+
+.item-actions {
+    display: flex;
+    gap: 8px; /* Espacio entre los botones de acción */
+    margin-top: 10px; /* Espacio si los botones se envuelven a una nueva línea */
+    flex-shrink: 0; /* Evita que los botones se encojan */
+}
+
+/* Estilos para formularios de añadir */
+.form-section {
+    background-color: #f2f5f7; /* Fondo suave para la sección de formulario */
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    margin-top: 20px;
+}
+
+.form-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-section input[type="date"],
+.form-section input[type="time"],
+.form-section input[type="text"] {
+    width: calc(100% - 22px); /* Ancho completo menos padding */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box; /* Incluye padding y borde en el ancho total */
+}
+
+/* Botones */
+.button-small {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-size: 0.9em;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-small.edit {
+    background-color: #007bff; /* Azul para editar */
+}
+
+.button-small.edit:hover {
+    background-color: #0056b3;
+}
+
+.button-small.delete {
+    background-color: #dc3545; /* Rojo para eliminar */
+}
+
+.button-small.delete:hover {
+    background-color: #c82333;
+}
+
+.button-add {
+    background-color: #28a745; /* Verde para añadir */
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    display: block; /* Ocupa todo el ancho */
+    width: 100%;
+    margin-top: 20px;
+}
+
+.button-add:hover {
+    background-color: #218838;
+}
+
+.back-link {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.button-back {
+    display: inline-block;
+    background-color: #6c757d; /* Gris para volver */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.button-back:hover {
+    background-color: #5a6268;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+    .card {
+        padding: 20px;
+        margin: 20px auto;
+        width: 95%;
+    }
+    .item-entry {
+        flex-direction: column; /* Apila los elementos en pantallas pequeñas */
+        align-items: flex-start; /* Alinea a la izquierda */
+    }
+    .item-entry span {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    .item-actions {
+        width: 100%; /* Botones de acción ocupan todo el ancho */
+        justify-content: flex-end; /* Alinea los botones a la derecha */
+    }
+    .form-section input[type="date"],
+    .form-section input[type="time"],
+    .form-section input[type="text"] {
+        width: 100%;
+    }
+}

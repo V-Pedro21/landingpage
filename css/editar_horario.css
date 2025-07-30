@@ -1,0 +1,231 @@
+/* Estilos globales y reseteo */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', Arial, sans-serif; /* Usar Montserrat si está disponible */
+    background-color: #f4f7f6; /* Fondo suave */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinea al inicio para permitir scroll si el contenido es largo */
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 700px; /* Ancho un poco mayor para mejor presentación de dos secciones */
+    width: 100%;
+    text-align: center;
+    margin-top: 20px; /* Espacio superior */
+    margin-bottom: 20px; /* Espacio inferior */
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+h1 .fas {
+    color: #3498db;
+}
+
+h2 {
+    color: #34495e;
+    font-size: 1.5em;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espacio entre secciones */
+}
+
+.schedule-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+}
+
+hr {
+    border: none;
+    border-top: 1px dashed #ccc;
+    margin: 30px 0;
+}
+
+.horario-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    border: 1px solid #c0c3c5;
+    margin-bottom: 10px; /* Espacio entre items del mismo tipo */
+}
+
+.horario-item:last-of-type {
+    margin-bottom: 0; /* No hay margen inferior para el último item */
+}
+
+.horario-item input[type="date"],
+.horario-item input[type="time"],
+.horario-item select {
+    flex: 1 1 calc(33% - 15px); /* Divide el espacio entre los 3 inputs/select */
+    min-width: 120px;
+    padding: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    -webkit-appearance: none; /* Para customizar select en algunos navegadores */
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.horario-item input[type="date"]:focus,
+.horario-item input[type="time"]:focus,
+.horario-item select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+}
+
+.eliminar-horario-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    flex-shrink: 0;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eliminar-horario-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Estilos para botones generales */
+.btn-add-horario,
+.btn-save-changes {
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+    width: fit-content; /* Se ajusta al contenido */
+    margin-left: auto; /* Centrar el botón si el div padre es flex */
+    margin-right: auto;
+}
+
+.btn-add-horario {
+    background-color: #3498db;
+}
+.btn-add-horario:hover {
+    background-color: #2980b9;
+}
+
+.form-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-save-changes {
+    background-color: #27ae60;
+}
+.btn-save-changes:hover {
+    background-color: #229a56;
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 25px;
+    text-decoration: none;
+    color: #34495e;
+    font-weight: bold;
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.btn-back:hover {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    border-color: #95a5a6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    .horario-item {
+        flex-direction: column; /* Apila elementos verticalmente */
+        align-items: stretch;
+    }
+    .horario-item input[type="date"],
+    .horario-item input[type="time"],
+    .horario-item select {
+        flex: 1 1 100%; /* Ocupa todo el ancho */
+        margin-bottom: 5px; /* Espacio entre los campos apilados */
+    }
+    .eliminar-horario-btn {
+        width: 100%; /* El botón ocupa todo el ancho */
+        margin-top: 5px;
+    }
+    .btn-add-horario, .btn-save-changes, .btn-back {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+    }
+    h2 {
+        font-size: 1.2em;
+    }
+    .horario-item {
+        padding: 8px;
+        gap: 8px;
+    }
+}

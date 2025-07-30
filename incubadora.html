@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Incubadora UNPRG</title>
+  <link rel="stylesheet" href="styles_incubadora.css" />
+</head>
+<body>
+
+  <!-- Fondo dinámico -->
+  <div class="slider-fondo" id="fondoSlider"></div>
+  
+  <!-- Contenido centrado -->
+  <div class="contenido fila-con-imagenes">
+  <img src="img/unpg.png" alt="Imagen izquierda" class="imagen-lateral izquierda" />
+
+  <div class="texto-central">
+    <h1>Bienvenidos a la Incubadora de Empresas</h1>
+    <p>Impulsa tu emprendimiento con asesoramiento profesional</p>
+    <div class="botones">
+      <a href="alumno.php">Alumno</a>
+      <a href="profesor.html">Profesor</a>
+    </div>
+  </div>
+</div>
+      <section class="publicaciones">
+  <h2>Publicaciones Recientes</h2>
+
+  <div class="tarjeta-publicacion">
+    <img src="img/imagen1.jpg" alt="Clase con metodología ágil" />
+    <div class="contenido-publicacion">
+      <h3>Metodologías Ágiles en la UNPRG   </h3>
+      <p>
+        Estudiantes del curso de Taller de Proyectos Informáticos aplicando Scrum, Kanban y Design Thinking en su Sprint 2. ¡Adaptarse y trabajar en equipo es clave!
+      </p>
+      <span class="fecha">Publicado: junio 2025</span>
+    </div>
+  </div>
+
+  <!-- Puedes duplicar esto para más publicaciones -->
+</section>
+      <section class="redes-sociales">
+      <h2>Conéctate con nosotros</h2>
+        <div class="iconos-redes">
+          <a href="https://web.facebook.com/incubadoraUNPRG" target="_blank" title="Facebook UNPRG">
+            <img src="img/facebook.png" alt="Facebook" />
+          </a>
+          <a href="https://www.linkedin.com/company/incubadora-de-empresas-unprg" target="_blank" title="LinkedIn UNPRG">
+            <img src="img/linkedin.png" alt="LinkedIn" />
+          </a>
+        </div>
+      </section>
+
+  <!-- Script para cambiar imágenes automáticamente, imágenes ya redimensionadas a 1920x1080 -->
+  <script>
+    const fondoSlider = document.getElementById('fondoSlider');
+    const imagenes = [
+      'img/fondo7.jpg',
+      'img/fondo1.jpg',
+      'img/fondo2.jpg',
+      'img/fondo3.jpg',
+      'img/fondo5.jpg'
+
+    ];
+
+    let i = 0;
+
+    function cambiarFondo() {
+      fondoSlider.style.backgroundImage = `url('${imagenes[i]}')`;
+      i = (i + 1) % imagenes.length;
+    }
+
+    // Cambiar cada 5 segundos
+    cambiarFondo(); // mostrar la primera al inicio
+    setInterval(cambiarFondo, 5000);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,274 @@
+/* --- Variables CSS (Colores Base) --- */
+:root {
+    --color-primary: #0056b3; /* Azul UNPRG o similar */
+    --color-primary-dark: #003d80;
+    --color-accent: #28a745; /* Verde para éxito/botones secundarios */
+    --color-background-light: #f4f7f6;
+    --color-text-dark: #333;
+    --color-text-light: #fefefe;
+    --color-border: #ddd;
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Estilos Generales del Cuerpo (para asegurar buena base) --- */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #e0f2f7, #c6e2e9); /* Degradado suave de fondo */
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinea arriba para evitar que el formulario se estire verticalmente */
+    min-height: 100vh; /* Para que el degradado ocupe toda la altura */
+    box-sizing: border-box;
+}
+
+/* --- Contenedor Principal del Formulario --- */
+.container.form-container {
+    background: rgba(255, 255, 255, 0.9); /* Blanco semitransparente para efecto glassmorphism */
+    border-radius: 15px;
+    box-shadow: var(--shadow-medium);
+    padding: 40px;
+    max-width: 800px;
+    width: 100%;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px); /* Efecto Glassmorphism */
+    -webkit-backdrop-filter: blur(10px); /* Para compatibilidad con Safari */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Borde sutil */
+    margin: 30px auto; /* Centrar y dar espacio arriba/abajo */
+}
+
+/* --- Encabezados del Formulario --- */
+h2, h3, h4 {
+    color: var(--color-primary-dark);
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2.2em;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--color-primary);
+    display: inline-block; /* Para que el borde se ajuste al texto */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h3 {
+    font-size: 1.8em;
+    color: var(--color-primary);
+    margin-top: 35px;
+}
+
+h4 {
+    font-size: 1.4em;
+    color: var(--color-text-dark);
+    margin-top: 25px;
+}
+
+/* --- Estilos de Etiquetas y Inputs --- */
+label {
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 15px;
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+textarea,
+.select2-container--default .select2-selection--single,
+.select2-container--default .select2-selection--multiple {
+    width: calc(100% - 22px); /* Ancho completo menos padding y borde */
+    padding: 12px 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1em;
+    background-color: #fcfcfc;
+    transition: all 0.3s ease; /* Transición suave para el focus */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+.select2-container--default.select2-container--focus .select2-selection--single,
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.2); /* Sombra al enfocar */
+    outline: none;
+}
+
+textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+    min-height: 80px;
+}
+
+/* --- Estilos específicos para Select2 (Personalización visual) --- */
+.select2-container .select2-selection--single {
+    height: 44px !important; /* Altura ajustada para el select simple */
+    display: flex; /* Para centrar el texto verticalmente */
+    align-items: center;
+    padding: 0 10px;
+}
+.select2-container .select2-selection__rendered {
+    line-height: 44px !important; /* Centrar texto */
+}
+
+.select2-container .select2-selection__arrow b {
+    border-top-color: var(--color-primary) !important; /* Color de la flecha */
+}
+
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+    background-color: var(--color-primary) !important;
+    color: var(--color-text-light) !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    border: 1px solid var(--color-primary-dark);
+    border-radius: 5px;
+    padding: 3px 8px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: var(--color-text-light);
+    margin-right: 5px;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+    color: var(--color-background-light);
+}
+
+/* --- Mensajes de Alerta --- */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+}
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.alert-error, .alert-danger { /* Usar 'alert-danger' para consistencia */
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+.alert-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+/* --- Botón de Enviar --- */
+button[type="submit"] {
+    background: linear-gradient(45deg, var(--color-primary-dark), var(--color-primary));
+    color: var(--color-text-light);
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 25px;
+    box-shadow: var(--shadow-light);
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(45deg, var(--color-primary), var(--color-primary-dark));
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px); /* Pequeño efecto de elevación */
+}
+
+/* --- Botón Volver al Panel --- */
+.nav-button-group {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.home-button {
+    display: inline-block;
+    background-color: #6c757d; /* Gris para botón secundario */
+    color: var(--color-text-light);
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: var(--shadow-light);
+}
+
+.home-button:hover {
+    background-color: #5a6268;
+    transform: translateY(-1px);
+}
+
+/* --- Mensajes pequeños bajo los selects --- */
+.small-text {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* --- Estilos para las secciones dinámicas (profesorContainer, horariosProfesorContainer) --- */
+#profesorContainer, #horariosProfesorContainer {
+    animation: fadeIn 0.8s ease-out; /* Animación de aparición */
+}
+
+/* --- Animaciones CSS --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design (Básico) */
+@media (max-width: 768px) {
+    .container.form-container {
+        padding: 25px;
+        margin: 15px;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+    h3 {
+        font-size: 1.5em;
+    }
+    button[type="submit"] {
+        font-size: 1em;
+        padding: 12px 20px;
+    }
+}
+.form-container, #solicitudForm {
+    position: relative;
+}
+.select2-container--open .select2-dropdown {
+    z-index: 1050;
+}

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro de Profesor</title>
+    <link rel="stylesheet" href="css/profesor_registro.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/i18n/es.js"></script>
+</head>
+<body>
+    <form action="registrar_profesor.php" method="POST">
+        <h2>📝 Registro de Profesor</h2>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required />
+
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo" required />
+
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena" required />
+
+        <h3>Áreas de Especialidad (Temas):</h3>
+        <select id="temasProfesorSelect" name="temas_experiencia[]" multiple="multiple" style="width: 100%;" required>
+            </select>
+        <p class="small-text">Selecciona temas existentes o escribe nuevos y presiona Enter para agregarlos.</p>
+
+        <h3>Horarios de Disponibilidad (Avanzado):</h3>
+
+        <h4>Disponibilidad Recurrente Semanal:</h4>
+        <div id="horarios-recurrente-container">
+        </div>
+        <button type="button" onclick="agregarHorarioRecurrente()">➕ Añadir Horario Recurrente</button>
+        <p class="small-text">Define patrones de horario que se repiten cada semana (ej. "Lunes 9:00-10:00").</p>
+
+        <h4>Disponibilidad Puntual (Única Fecha):</h4>
+        <div id="horarios-puntual-container">
+        </div>
+        <button type="button" onclick="agregarHorarioPuntual()">➕ Añadir Horario Puntual</button>
+        <p class="small-text">Define bloques de horario para una fecha específica (ej. "25/07/2025 14:00-15:00").</p>
+        
+        <br /><br />
+        <button type="submit">Registrar Profesor</button>
+        <div class="login-link">
+            <p>¿Ya tienes cuenta? <a href="login_portal.php">Iniciar Sesión</a></p>
+        </div>
+    </form>
+
+    <script>
+        let recurrenteCount = 0;
+        let puntualCount = 0;
+
+        function agregarHorarioRecurrente() {
+            recurrenteCount++;
+            const container = document.getElementById("horarios-recurrente-container");
+            const horarioDiv = document.createElement("div");
+            horarioDiv.classList.add("horario-item", "recurrente-item");
+            horarioDiv.innerHTML = `
+                <label>Día:</label>
+                <select name="dia_semana_recurrente[]" required>
+                    <option value="">Selecciona un día</option>
+                    <option value="1">Lunes</option>
+                    <option value="2">Martes</option>
+                    <option value="3">Miércoles</option>
+                    <option value="4">Jueves</option>
+                    <option value="5">Viernes</option>
+                    <option value="6">Sábado</option>
+                    <option value="7">Domingo</option>
+                </select>
+                <label>Inicio:</label>
+                <input type="time" name="hora_inicio_recurrente[]" required>
+                <label>Fin:</label>
+                <input type="time" name="hora_fin_recurrente[]" required>
+                <label>Desde (opc.):</label>
+                <input type="date" name="fecha_inicio_recurrente[]">
+                <label>Hasta (opc.):</label>
+                <input type="date" name="fecha_fin_recurrente[]">
+                <button type="button" onclick="this.parentNode.remove()">🗑️</button>
+            `;
+            container.appendChild(horarioDiv);
+            const inicioInput = horarioDiv.querySelector('input[name="hora_inicio_recurrente[]"]');
+            const finInput = horarioDiv.querySelector('input[name="hora_fin_recurrente[]"]');
+            inicioInput.addEventListener('input', () => autoFillEndTimeAndValidate(inicioInput, finInput));
+            finInput.addEventListener('input', () => autoFillEndTimeAndValidate(inicioInput, finInput));
+        }
+
+        function agregarHorarioPuntual() {
+            puntualCount++;
+            const container = document.getElementById("horarios-puntual-container");
+            const horarioDiv = document.createElement("div");
+            horarioDiv.classList.add("horario-item", "puntual-item");
+            horarioDiv.innerHTML = `
+                <label>Fecha:</label>
+                <input type="date" name="fecha_puntual[]" required>
+                <label>Inicio:</label>
+                <input type="time" name="hora_inicio_puntual[]" required>
+                <label>Fin:</label>
+                <input type="time" name="hora_fin_puntual[]" required>
+                <button type="button" onclick="this.parentNode.remove()">🗑️</button>
+            `;
+            container.appendChild(horarioDiv);
+            const fechaInput = horarioDiv.querySelector('input[name="fecha_puntual[]"]');
+            setMinDateForInput(fechaInput);
+            const inicioInput = horarioDiv.querySelector('input[name="hora_inicio_puntual[]"]');
+            const finInput = horarioDiv.querySelector('input[name="hora_fin_puntual[]"]');
+            inicioInput.addEventListener('input', () => autoFillEndTimeAndValidate(inicioInput, finInput));
+            finInput.addEventListener('input', () => autoFillEndTimeAndValidate(inicioInput, finInput));
+        }
+
+        function autoFillEndTimeAndValidate(inputInicio, inputFin) {
+            if (inputInicio.value && !inputFin.value) {
+                const [hours, minutes] = inputInicio.value.split(':').map(Number);
+                const endDate = new Date();
+                endDate.setHours(hours + 1);
+                endDate.setMinutes(minutes);
+                inputFin.value = `${String(endDate.getHours()).padStart(2, '0')}:${String(endDate.getMinutes()).padStart(2, '0')}`;
+            }
+
+            if (inputInicio.value && inputFin.value) {
+                if (inputFin.value <= inputInicio.value) {
+                    inputFin.setCustomValidity('La hora de fin debe ser posterior a la hora de inicio.');
+                } else {
+                    inputFin.setCustomValidity('');
+                }
+            } else {
+                inputFin.setCustomValidity('');
+            }
+        }
+
+        function setMinDateForInput(inputElement) {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            inputElement.min = `${year}-${month}-${day}`;
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Inicializar Select2 para Temas de Experiencia (múltiples)
+            $('#temasProfesorSelect').select2({
+                placeholder: "Busca y selecciona uno o más temas",
+                allowClear: true,
+                tags: true, // Permite añadir nuevos temas
+                tokenSeparators: [','], // Separar por coma
+                language: "es", // Idioma español
+                width: 'resolve',
+                ajax: {
+                    url: 'get_all_unique_topics.php', // Este archivo PHP debe devolver los temas
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        return { q: params.term };
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: data.map(item => ({ id: item.id, text: item.text }))
+                        };
+                    },
+                    cache: true
+                }
+            });
+
+            document.querySelector('form').addEventListener('submit', (e) => {
+                // Validación de correo @unprg.edu.pe
+                const emailInput = $('#correo');
+                if (!emailInput.val().endsWith('@unprg.edu.pe')) {
+                    e.preventDefault();
+                    alert('Por favor, usa un correo con el dominio @unprg.edu.pe');
+                    emailInput.focus();
+                    return;
+                }
+
+                // Validación de al menos UN tema de experiencia
+                if ($('#temasProfesorSelect').val().length === 0) {
+                    e.preventDefault();
+                    alert("Por favor, selecciona al menos un tema de especialidad.");
+                    $('#temasProfesorSelect').select2('open');
+                    return;
+                }
+
+                // Validación de al menos UN horario (recurrente o puntual)
+                const hasRecurrent = document.querySelectorAll('.recurrente-item').length > 0;
+                const hasPuntual = document.querySelectorAll('.puntual-item').length > 0;
+
+                if (!hasRecurrent && !hasPuntual) {
+                    e.preventDefault();
+                    alert("Por favor, añade al menos un horario de disponibilidad (recurrente o puntual).");
+                    return;
+                }
+
+                // Validar horarios recurrentes y puntuales (tu código actual es bueno aquí)
+                let validHorarios = true;
+                document.querySelectorAll('.recurrente-item').forEach(item => {
+                    const dia = item.querySelector('select[name="dia_semana_recurrente[]"]');
+                    const inicio = item.querySelector('input[name="hora_inicio_recurrente[]"]');
+                    const fin = item.querySelector('input[name="hora_fin_recurrente[]"]');
+                    
+                    if (!dia.value || !inicio.value || !fin.value) { validHorarios = false; }
+                    autoFillEndTimeAndValidate(inicio, fin); 
+                    if (!inicio.checkValidity() || !fin.checkValidity()) { validHorarios = false; }
+                });
+
+                document.querySelectorAll('.puntual-item').forEach(item => {
+                    const fecha = item.querySelector('input[name="fecha_puntual[]"]');
+                    const inicio = item.querySelector('input[name="hora_inicio_puntual[]"]');
+                    const fin = item.querySelector('input[name="hora_fin_puntual[]"]');
+
+                    if (!fecha.value || !inicio.value || !fin.value) { validHorarios = false; }
+                    autoFillEndTimeAndValidate(inicio, fin); 
+                    if (!inicio.checkValidity() || !fin.checkValidity()) { validHorarios = false; }
+                });
+
+                if (!validHorarios) {
+                    e.preventDefault();
+                    alert("Por favor, completa y corrige todos los campos de horario.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
